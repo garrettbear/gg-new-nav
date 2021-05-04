@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -50,12 +49,13 @@ export default function Home() {
         <aside className="gds-persist-nav__sidebar">
           <ul className="gds-persist-nav__top-nav">
             <li className="gds-persist-nav__item">
-              <Link href="/static-left">
-                <p className="gds-persist-nav__link gds-text--regular -cursor-pointer">
-                  <i className="gds-persist-nav__icon fa fa-fw fa-cubes -m-r-3"></i>
-                  Subatomic
-                </p>
-              </Link>
+              <a
+                href=""
+                className="gds-persist-nav__link gds-text--regular -pointer-events--none"
+              >
+                <i className="gds-persist-nav__icon fa fa-fw fa-cubes -m-r-3"></i>{" "}
+                Subatomic
+              </a>
             </li>
           </ul>
         </aside>
