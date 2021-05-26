@@ -30,20 +30,32 @@ img {
   header {
     top: 0;
     width: 100%;
-    background: pink;
+    background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem;
-    img {
-      max-width: 100px;
+    img,
+    .menu-logo {
+      max-width: 120px;
+      flex-grow: 1;
     }
     .menu-icon {
       font-size: 1.5rem;
-      color: var(--light3Color);
+      color: $gg-dark-5;
       border: none;
       background: none;
       cursor: pointer;
+      flex-grow: 0;
+    }
+    .menu-title {
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2rem;
+      flex-grow: 2;
+      padding: 0.25rem 0.75rem;
+      color: $gg-light-3;
     }
   }
   aside {
@@ -86,6 +98,7 @@ img {
       width: 100%;
       max-width: 220px;
       justify-content: center;
+      flex-direction: column-reverse;
       .menu-icon {
         display: none;
       }
@@ -103,5 +116,18 @@ img {
 
   .main {
     margin-top: 0;
+  }
+}
+
+.nav-item {
+  background: seagreen;
+  display: flex;
+  &--icon {
+    margin-right: 0.75rem;
+  }
+  &--text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
