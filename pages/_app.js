@@ -5,7 +5,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <link rel="stylesheet" href="https://5914f2232e79.ngrok.io/index.css" />
+        <link rel="stylesheet" href="http://localhost:8000/index.css" />
       </Head>
       <Component {...pageProps} />
     </>

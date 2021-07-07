@@ -3,61 +3,239 @@ import { useState } from "react";
 export default function Home() {
   const [leftMenu, setLeftMenu] = useState(false);
   const [rightMenu, setRightMenu] = useState(false);
+  const [leftCollapsed, setLeftCollapsed] = useState(false);
+  const [rightCollapsed, setRightCollapsed] = useState(false);
+  const [subNav, setSubNav] = useState(false);
+  const [theme, setTheme] = useState(false);
+  const [search, setSearch] = useState(false);
+
+  const changeTheme = () => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      !theme ? "dark" : "light"
+    );
+    setTheme(!theme);
+  };
   return (
     <div className="gds-app-layout__container">
-      <header className="gds-app-layout__top gds-nav-top">
-        <div className="gds-nav-logo">
-          {/* <img
-            src="https://gumgum-design-system.s3.amazonaws.com/mark.svg"
-            alt="GumGum Icon"
-            className="gds-nav-logo__icon"
-          /> */}
-          <img
-            src="https://gumgum-design-system.s3.amazonaws.com/logo.svg"
-            alt="GumGum Logo"
-            className="gds-nav-logo__logo"
-          />
-        </div>
-        <ul className="gds-nav-top__links">
-          <li className="gds-nav-top__link gds-nav-top__link--sub">
-            <a href="/layout">Advertisers</a>
-            <ul className="gds-nav-top__sub-links">
-              <li className="gds-nav-top__link">
-                <a href="/layout">Sub Item 1</a>
+      <header className="gds-app-layout__top gds-nav__top">
+        {/* <a href="/layout" className="gds-nav__logo"></a> */}
+        <h1 className="gds-nav__logo"></h1>
+        <ul className="gds-nav__links" data-links-hide="900px">
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-server gds-nav__link-icon" />
+              <div className="gds-nav__link-text">A Tag List Item</div>
+            </a>
+          </li>
+          <li
+            className={`gds-nav__links--sub-wrapper ${
+              subNav ? "gds-nav__links--sub-wrapper--active" : ""
+            }`}
+          >
+            <button
+              onClick={() => setSubNav(!subNav)}
+              className="gds-nav__link"
+            >
+              <i className="fas fa-fw fa-server gds-nav__link-icon" />
+              <span className="gds-nav__link-text">Advertiser</span>
+            </button>
+            <ul className="gds-nav__links-sub">
+              <li>
+                <a className="gds-nav__link-sub" href="/layout">
+                  <i className="fas fa-fw fa-server gds-nav__link-icon" />
+                  <span className="gds-nav__link-text">
+                    Sub Item This One Is A Bit Longer
+                  </span>
+                </a>
               </li>
-              <li className="gds-nav-top__link">
-                <a href="/layout">Sub Item 2</a>
+              <li>
+                <a className="gds-nav__link-sub" href="/layout">
+                  <i className="fas fa-fw fa-server gds-nav__link-icon" />
+                  <span className="gds-nav__link-text">
+                    Sub Item This One Is A Bit Longer
+                  </span>
+                </a>
               </li>
-              <li className="gds-nav-top__link">
-                <a href="/layout">Sub Item 3</a>
+              <li>
+                <a className="gds-nav__link-sub" href="/layout">
+                  <i className="fas fa-fw fa-server gds-nav__link-icon" />
+                  <span className="gds-nav__link-text">
+                    Sub Item This One Is A Bit Longer
+                  </span>
+                </a>
               </li>
             </ul>
           </li>
-          <li className="gds-nav-top__link">
-            <a href="/layout">Campaigns</a>
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-server gds-nav__link-icon" />
+              <span className="gds-nav__link-text">A Tag List Item</span>
+            </a>
           </li>
-          <li className="gds-nav-top__link">
-            <a href="/layout">3rd Party Reporting</a>
+          <li>
+            <div className="gds-nav__link">
+              <span className="gds-nav__link-text">Div List Item No Icon</span>
+            </div>
           </li>
         </ul>
-        <button className="menu-btn" onClick={() => setLeftMenu(!leftMenu)}>
-          LEFT MENU
-        </button>
-        <button className="menu-btn" onClick={() => setRightMenu(!rightMenu)}>
-          RIGHT MENU
-        </button>
+
+        {/* <div className="gds-form-group">
+          <div className="gds-form-group__input-group">
+            <input
+              className="gds-form-group__text-input gds-form-group__text-input--xs"
+              type="text"
+              placeholder="Search"
+            />
+          </div>
+        </div> */}
+
+        {/* <div className="gds-form-group">
+          <div
+            className={`gds-search-select ${
+              search ? "gds-search-select--open" : ""
+            }`}
+            open-gds-search-select="single"
+          >
+            <div className="gds-search-select__control">
+              <input
+                id="searcchselect-input-0"
+                type="text"
+                placeholder="Choose a State..."
+                className="gds-search-select__input gds-search-select__input--sm"
+                autoComplete="off"
+              />
+              <button
+                className="gds-search-select__toggle-button"
+                onClick={() => setSearch(!search)}
+              >
+                {search ? (
+                  <i className="fas fa-fw fa-times-circle"></i>
+                ) : (
+                  <i className="fas fa-fw fa-search "></i>
+                )}
+              </button>
+            </div>
+            <div className="gds-search-select__menu">
+              <ul className="gds-search-select__menu-items">
+                <li className="gds-search-select__menu-item">Alaska</li>
+                <li className="gds-search-select__menu-item">Arizona</li>
+                <li className="gds-search-select__menu-item">Arkansas</li>
+                <li className="gds-search-select__menu-item">California</li>
+                <li className="gds-search-select__menu-item">Colorado</li>
+                <li className="gds-search-select__menu-item">Connecticut</li>
+                <li className="gds-search-select__menu-item">Deleware</li>
+              </ul>
+            </div>
+          </div>
+        </div> */}
+
+        <div className="gds-nav__icons gds-nav__item--grow-0">
+          <button className="gds-nav__icon">
+            <i className="fas fa-search"></i>
+          </button>
+          <a href="#" className="gds-nav__icon">
+            <i className="fas fa-user"></i>
+          </a>
+          <div className="gds-nav__icon ">
+            <i className="fas fa-sign-out-alt"></i>
+          </div>
+        </div>
       </header>
       <nav
-        className={`gds-app-layout__left gds-side-nav ${
+        className={`gds-app-layout__left gds-nav__side ${
           leftMenu ? "gds-app-layout__left--open" : ""
-        }`}
+        }
+        ${leftCollapsed ? "gds-nav__side--collapsed" : ""}
+        `}
       >
-        <button className="menu-btn" onClick={() => setLeftMenu(!leftMenu)}>
-          close
-        </button>
-        Left
+        <a href="/layout" className="gds-nav__logo"></a>
+        {/* Global Nav Link */}
+        <ul className="gds-nav__links">
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-home gds-nav__link-icon" />
+              <span className="gds-nav__link-text">A Tag List Item</span>
+            </a>
+          </li>
+          <li>
+            <button
+              className="gds-nav__link"
+              onClick={() => setLeftCollapsed(!leftCollapsed)}
+            >
+              <i className="fas fa-fw fa-server gds-nav__link-icon" />
+              <span className="gds-nav__link-text">Collapse Menu</span>
+            </button>
+          </li>
+          <li>
+            <button
+              className="gds-nav__link"
+              onClick={() => setLeftMenu(!leftMenu)}
+            >
+              <i className="fas fa-fw fa-times gds-nav__link-icon" />
+              <span className="gds-nav__link-text">Close</span>
+            </button>
+          </li>
+        </ul>
+        <ul className="gds-nav__icons gds-nav__item--grow-0">
+          <li>
+            <button className="gds-nav__icon">
+              <i className="fas fa-search"></i>
+            </button>
+          </li>
+          <li>
+            <a href="#" className="gds-nav__icon">
+              <i className="fas fa-user"></i>
+            </a>
+          </li>
+          <li>
+            <div className="gds-nav__icon ">
+              <i className="fas fa-sign-out-alt"></i>
+            </div>
+          </li>
+        </ul>
       </nav>
       <main className="gds-app-layout__main">
+        <div className="gds-nav__main">
+          <nav class="gds-breadcrumb" aria-label="Breadcrumb">
+            <ol class="gds-breadcrumb__list">
+              <li class="gds-breadcrumb__item">
+                <a class="gds-breadcrumb__link" href="#">
+                  Home
+                </a>
+              </li>
+              <li class="gds-breadcrumb__item">
+                <a class="gds-breadcrumb__link" href="#">
+                  About
+                </a>
+              </li>
+              <li class="gds-breadcrumb__item">
+                <a
+                  class="gds-breadcrumb__link"
+                  href="#"
+                  aria-current="location"
+                >
+                  This one is way too long so lets cut it off
+                </a>
+              </li>
+              <li class="gds-breadcrumb__item">
+                <a class="gds-breadcrumb__link" href="#">
+                  Too Deep
+                </a>
+              </li>
+              <li class="gds-breadcrumb__item">
+                <a class="gds-breadcrumb__link" href="#">
+                  Keep Adding On
+                </a>
+              </li>
+              <li class="gds-breadcrumb__item">
+                <a class="gds-breadcrumb__link" href="#">
+                  Ad #012844
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
         <div
           style={{
             minHeight: "100vh",
@@ -66,12 +244,25 @@ export default function Home() {
             padding: ".5rem",
           }}
         >
-          <p>
+          <p className="tester">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum animi
             quasi autem nam placeat repudiandae corrupti quo est error molestiae
             deleniti esse ipsam perferendis vitae quis quam eius, veritatis
             harum.
           </p>
+          <button onClick={changeTheme}>Change Theme</button>
+          <button
+            className="gds-button gds-button--primary gds-button--xs menu-btn"
+            onClick={() => setLeftMenu(!leftMenu)}
+          >
+            LEFT MENU
+          </button>
+          {/* <button
+            className="gds-button gds-button--primary gds-button--xs menu-btn"
+            onClick={() => setRightMenu(!rightMenu)}
+          >
+            RIGHT MENU
+          </button> */}
           <div>test</div>
           <p>hello</p>
           <p>hello</p>
@@ -105,52 +296,52 @@ export default function Home() {
         </div>
         <footer>New Nav ©{new Date().getFullYear()}</footer>
       </main>
-      <aside
-        className={`gds-app-layout__right gds-side-nav gds-side-nav--collapsed ${
+      {/* <aside
+        className={`gds-app-layout__right gds-nav__side ${
           rightMenu ? "gds-app-layout__right--open" : ""
-        }`}
+        }
+        ${rightCollapsed ? "gds-nav__side--collapsed" : ""}
+        `}
       >
-        <button className="menu-btn" onClick={() => setRightMenu(!rightMenu)}>
-          close
-        </button>
-        Right
+        <ul>
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-home gds-nav__link-icon" />
+              <span className="gds-nav__link-text">A Tag List Item</span>
+            </a>
+          </li>
+          <li>
+            <button
+              className="gds-nav__link"
+              onClick={() => setRightCollapsed(!rightCollapsed)}
+            >
+              <i className="fas fa-fw fa-server gds-nav__link-icon" />
+              <span className="gds-nav__link-text">Collapse Menu</span>
+            </button>
+          </li>
+          <li>
+            <button
+              className="gds-nav__link"
+              onClick={() => setRightMenu(!rightMenu)}
+            >
+              <i className="fas fa-fw fa-times gds-nav__link-icon" />
+              <span className="gds-nav__link-text">Close</span>
+            </button>
+          </li>
+        </ul>
+
+        <div className="outer">
+          Hello
+          <div className="inner">Hi</div>
+        </div>
       </aside>
-      <div className="gds-app-layout__bottom gds-nav-bottom">Bottom</div>
+    */}
+      {/* <div
+        className="gds-app-layout__bottom gds-nav__bottom"
+        style={{ background: "green" }}
+      >
+        Bottom
+      </div> */}
     </div>
-    // <div className="gds-app">
-    //   <div className="static-left">
-    //     <header>
-    //       {/* Hamburger Menu for mobile */}
-    //       <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-    //         <i className="fas fa-bars"></i>
-    //       </button>
-    //       <img
-    //         className="menu-logo"
-    //         src="https://gumgum-design-system.s3.amazonaws.com/logo.svg"
-    //         alt="GumGum Logo"
-    //       />
-    //     </header>
-    //     <aside className={`${menuOpen ? "open" : ""}`}>
-    //       <div className="menu-title">Publisher Center</div>
-    //       <nav>
-    //         <ul>
-    //           <li className="nav-item">
-    //             <span className="nav-item--icon">
-    //               <i className="fas fa-home"></i>
-    //             </span>
-    //             <p className="nav-item--text">
-    //               Hello My World This Will Be Long
-    //             </p>
-    //           </li>
-    //           <li className="nav-item">Hello World</li>
-    //           <li className="nav-item">Hello World</li>
-    //         </ul>
-    //       </nav>
-    //     </aside>
-    //   </div>
-    //   <div className="main">
-    //     <p>main content</p>
-    //   </div>
-    // </div>
   );
 }
