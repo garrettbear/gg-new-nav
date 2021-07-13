@@ -8,6 +8,7 @@ export default function Home() {
   const [subNav, setSubNav] = useState(false);
   const [theme, setTheme] = useState(false);
   const [search, setSearch] = useState(false);
+  const [links, setLinks] = useState(false);
 
   const changeTheme = () => {
     document.documentElement.setAttribute(
@@ -19,9 +20,23 @@ export default function Home() {
   return (
     <div className="gds-app-layout__container">
       <header className="gds-app-layout__top gds-nav__top">
-        {/* <a href="/layout" className="gds-nav__logo"></a> */}
-        <h1 className="gds-nav__logo"></h1>
-        <ul className="gds-nav__links" data-links-hide="900px">
+        <button
+          className="gds-nav__menu gds-nav__auto-hide"
+          onClick={() => setLinks(!links)}
+        ></button>
+        <a href="#" className="gds-nav__logo"></a>
+
+        <ul
+          className={`gds-nav__links gds-nav__auto-hide ${
+            links ? "gds-nav__auto-hide--active" : ""
+          }`}
+        >
+          <li className="gds-nav__close-wrapper">
+            <button
+              className="gds-nav__close"
+              onClick={() => setLinks(!links)}
+            ></button>
+          </li>
           <li>
             <a href="#" className="gds-nav__link">
               <i className="fas fa-fw fa-server gds-nav__link-icon" />
@@ -42,7 +57,7 @@ export default function Home() {
             </button>
             <ul className="gds-nav__links-sub">
               <li>
-                <a className="gds-nav__link-sub" href="/layout">
+                <a className="gds-nav__link-sub" href="#">
                   <i className="fas fa-fw fa-server gds-nav__link-icon" />
                   <span className="gds-nav__link-text">
                     Sub Item This One Is A Bit Longer
@@ -50,7 +65,7 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a className="gds-nav__link-sub" href="/layout">
+                <a className="gds-nav__link-sub" href="#">
                   <i className="fas fa-fw fa-server gds-nav__link-icon" />
                   <span className="gds-nav__link-text">
                     Sub Item This One Is A Bit Longer
@@ -58,7 +73,7 @@ export default function Home() {
                 </a>
               </li>
               <li>
-                <a className="gds-nav__link-sub" href="/layout">
+                <a className="gds-nav__link-sub" href="#">
                   <i className="fas fa-fw fa-server gds-nav__link-icon" />
                   <span className="gds-nav__link-text">
                     Sub Item This One Is A Bit Longer
@@ -149,9 +164,27 @@ export default function Home() {
         ${leftCollapsed ? "gds-nav__side--collapsed" : ""}
         `}
       >
-        <a href="/layout" className="gds-nav__logo"></a>
+        <div className="gds-nav__close-wrapper">
+          <button
+            className="gds-nav__close"
+            onClick={() => setLeftMenu(!leftMenu)}
+          ></button>
+        </div>
+        <a href="#" className="gds-nav__logo"></a>
         {/* Global Nav Link */}
         <ul className="gds-nav__links">
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-home gds-nav__link-icon" />
+              <span className="gds-nav__link-text">A Tag List Item</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" className="gds-nav__link">
+              <i className="fas fa-fw fa-home gds-nav__link-icon" />
+              <span className="gds-nav__link-text">A Tag List Item</span>
+            </a>
+          </li>
           <li>
             <a href="#" className="gds-nav__link">
               <i className="fas fa-fw fa-home gds-nav__link-icon" />
@@ -197,39 +230,39 @@ export default function Home() {
       </nav>
       <main className="gds-app-layout__main">
         <div className="gds-nav__main">
-          <nav class="gds-breadcrumb" aria-label="Breadcrumb">
-            <ol class="gds-breadcrumb__list">
-              <li class="gds-breadcrumb__item">
-                <a class="gds-breadcrumb__link" href="#">
+          <nav className="gds-breadcrumb" aria-label="Breadcrumb">
+            <ol className="gds-breadcrumb__list">
+              <li className="gds-breadcrumb__item">
+                <a className="gds-breadcrumb__link" href="#">
                   Home
                 </a>
               </li>
-              <li class="gds-breadcrumb__item">
-                <a class="gds-breadcrumb__link" href="#">
+              <li className="gds-breadcrumb__item">
+                <a className="gds-breadcrumb__link" href="#">
                   About
                 </a>
               </li>
-              <li class="gds-breadcrumb__item">
+              <li className="gds-breadcrumb__item">
                 <a
-                  class="gds-breadcrumb__link"
+                  className="gds-breadcrumb__link"
                   href="#"
                   aria-current="location"
                 >
                   This one is way too long so lets cut it off
                 </a>
               </li>
-              <li class="gds-breadcrumb__item">
-                <a class="gds-breadcrumb__link" href="#">
+              <li className="gds-breadcrumb__item">
+                <a className="gds-breadcrumb__link" href="#">
                   Too Deep
                 </a>
               </li>
-              <li class="gds-breadcrumb__item">
-                <a class="gds-breadcrumb__link" href="#">
+              <li className="gds-breadcrumb__item">
+                <a className="gds-breadcrumb__link" href="#">
                   Keep Adding On
                 </a>
               </li>
-              <li class="gds-breadcrumb__item">
-                <a class="gds-breadcrumb__link" href="#">
+              <li className="gds-breadcrumb__item">
+                <a className="gds-breadcrumb__link" href="#">
                   Ad #012844
                 </a>
               </li>
